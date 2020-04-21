@@ -5,18 +5,31 @@ using UnityEngine;
 public class MouthCamScript : MonoBehaviour
 {
     // Start is called before the first frame updatevar newSprite : Sprite;
-    public Sprite newSprite;
+    public Sprite coconut;
+    public Sprite sand;
+    public Sprite raft;
+    // public Sprite sand;
     void Start()
     {
-       
+
     }
     // Update is called once per frame
     void Update()
     {
-        if (TongueAttack.objInMouthTracker=="coconut"){
-             GetComponent<SpriteRenderer>().sprite = newSprite;
-        }else{
-             GetComponent<SpriteRenderer>().sprite = null;
+        if (TongueAttack.objInMouthTracker == "Coconut")
+        {
+            GetComponent<SpriteRenderer>().sprite = coconut;
+        }
+        
+        else if (TongueAttack.objInMouthTracker == "Raft")
+        {
+
+            GetComponent<SpriteRenderer>().sprite = raft;
+
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().sprite = null;
         }
 
     }

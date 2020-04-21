@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class ButtonBehaviourScript : MonoBehaviour
 {
     public GameObject pausedCanvas;
@@ -19,17 +19,45 @@ public class ButtonBehaviourScript : MonoBehaviour
         {
             pausedCanvas.SetActive(!pauseStatus);
             pauseStatus = !pauseStatus;
-            if (pauseStatus){
-             Time.timeScale = 0f;
+            if (pauseStatus)
+            {
+                Time.timeScale = 0f;
 
-            }else{
-             Time.timeScale = 1f;
+            }
+            else
+            {
+                Time.timeScale = 1f;
 
             }
             // animator.SetBool("IsJumping", true);
         }
     }
-    void onClickPaused()
+  
+   public void onClickResume()
     {
+        pausedCanvas.SetActive(false);
+        pauseStatus = false;
+        Time.timeScale = 1f;
+
     }
+    public void onClickBackToMM()
+    {
+        SceneManager.LoadSceneAsync("MainMenu");
+        Time.timeScale = 1f;
+
+    }
+    public void onClickBegin()
+    {
+        SceneManager.LoadSceneAsync("Scene1");
+    }
+    public void onClickExit()
+    {
+        Application.Quit();
+    }
+    public void onClickHowToPlay()
+    {
+        SceneManager.LoadSceneAsync("HowToPlay");
+
+    }
+
 }

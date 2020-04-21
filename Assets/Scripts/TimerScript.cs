@@ -6,7 +6,9 @@ using TMPro;
 public class TimerScript : MonoBehaviour
 {
     public TMP_Text timerText;
-    private float time = 599;
+    public GameObject gameOverCanvas;
+
+    private float time = 299;
 
     void Start()
     {
@@ -17,7 +19,7 @@ public class TimerScript : MonoBehaviour
     {
         if (timerText != null)
         {
-            time = 599;
+            // time = 5;
             // timerText.text = "Time Left: 20:00:000";
             InvokeRepeating("UpdateTimer", 0.0f, 0.01667f);
         }
@@ -31,7 +33,15 @@ public class TimerScript : MonoBehaviour
             string minutes = Mathf.Floor(time / 60).ToString("00");
             string seconds = (time % 60).ToString("00");
             string fraction = ((time * 100) % 100).ToString("000");
-            timerText.text = minutes + ":" + seconds ;
+            timerText.text = minutes + ":" + seconds;
+            if (Mathf.Floor(time / 60) < 1f && (time % 60) <1f)
+            {
+                gameOverCanvas.SetActive(true);
+                Time.timeScale = 0f;
+
+
+            }
         }
+
     }
 }
