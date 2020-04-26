@@ -49,6 +49,8 @@ public class ButtonBehaviourScript : MonoBehaviour
     public void onClickBegin()
     {
         SceneManager.LoadSceneAsync("Scene1");
+        Time.timeScale = 1f;
+
     }
     public void onClickExit()
     {
